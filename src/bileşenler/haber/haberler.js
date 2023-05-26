@@ -4,6 +4,15 @@ import './haberler.less'
 // ES6 Modülleri ile ilgili bilgi için bakabilirsiniz: https://exploringjs.com/es6/ch_modules.html#sec_basics-of-es6-modules
 const data = [
   {
+    baslik: 'Bu bir haber değildir!',
+    tarih: '26 Mayıs 2023',
+    ilkParagraf: `haber1`,
+
+    ikinciParagraf: `Haber2`,
+
+    ucuncuParagraf: `Haber3`
+  },
+  {
     baslik: 'Workintech Öğrencileri: "Bizler en iyi öğrencileriz!"',
     tarih: '11 Kasım 2022',
     ilkParagraf: `Lucas ipsum dolor sit amet ben twi'lek padmé darth darth darth moff hutt organa twi'lek. Ben amidala secura skywalker lando
@@ -115,3 +124,48 @@ const data = [
   Adım 5: Veri dizisine yeni haber nesnesi eklemeyi deneyin. Diğer verilerle aynı yapıda olmasına dikkat edin.
   Eklediğiniz yeni haberi görmek için sayfayı yenileyin.
 */
+const haberYapici = (news) =>{
+const containerDiv=document.createElement("div");
+containerDiv.classList.add("article");
+
+const baslik = document.createElement("h2");
+baslik.textContent = news.baslik;
+containerDiv.append(baslik);
+
+const paragraph = document.createElement("p");
+paragraph.classList.add("tarih");
+paragraph.textContent = news.tarih;
+containerDiv.append(paragraph);
+
+
+const paragraph1 = document.createElement("p");
+paragraph1.textContent = news.ilkParagraf;
+containerDiv.append(paragraph1);
+
+const paragraph2 = document.createElement("p");
+paragraph2.textContent = news.ikinciParagraf;
+containerDiv.append(paragraph2);
+
+const paragraph3 = document.createElement("p");
+paragraph3.textContent = news.ucuncuParagraf;
+containerDiv.append(paragraph3);
+
+const span = document.createElement("span");
+span.classList.add("expandButton");
+span.textContent = "+";
+
+span.addEventListener("click",(event)=>{
+  event.target.parentElement.classList.toggle("article-open");
+
+});
+
+
+
+containerDiv.append(span);
+return containerDiv;
+
+
+}
+data.forEach((news)=>{
+  document.querySelector(".articles").append(haberYapici(news));
+});

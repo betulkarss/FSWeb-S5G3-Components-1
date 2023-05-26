@@ -9,8 +9,12 @@
   background-color: white;
   position: relative;
   height: 50px;
-  overflow: hidden;
+  
   box-shadow: 2px 2px 2px lightgrey;
+  transition: height 1s ease;
+  p {
+    display: none;
+  }
 
   h2 {
     font-size: 28px;
@@ -37,6 +41,10 @@
 
 .article-open {
   height: 400px;
+  overflow-y: scroll;
+ p {
+  display:block;
+}
 }
 
 .close {
